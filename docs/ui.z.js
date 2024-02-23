@@ -1,78 +1,83 @@
-export const angle_slider = ($_4) => {
-    let $_5 = document.createElement('input');
-    $_5.type = 'range';
-    $_5.style.position = 'absolute';
-    $_5.style.top = '2%';
-    $_5.style.appearance = 'none';
-    $_5.style.background = '#A0A0A0';
-    $_5.style.borderRadius = '30px';
-    $_5.style.left = '35%';
-    $_5.style.right = '35%';
-    $_5.style.width = '30%';
-    $_5.style.opacity = 0.75;
-    $_5.min = -1;
-    $_5.max = 1;
-    $_5.step = 0.001;
-    $_5.onchange = ($_7) => {
-        return $_5.value = 0;
+export const angle_slider = ($_5) => {
+    let $_6 = document.createElement('input');
+    $_6.type = 'range';
+    $_6.style.position = 'absolute';
+    $_6.style.top = '2%';
+    $_6.style.appearance = 'none';
+    $_6.style.background = '#A0A0A0';
+    $_6.style.borderRadius = '30px';
+    $_6.style.left = '35%';
+    $_6.style.right = '35%';
+    $_6.style.width = '30%';
+    $_6.style.height = '5%';
+    $_6.style.opacity = 0.75;
+    $_6.min = -1;
+    $_6.max = 1;
+    $_6.step = 0.001;
+    $_6.onchange = ($_8) => {
+        return $_6.value = 0;
     };
-    $_5.value = 0;
+    $_6.value = 0;
     setInterval(() => {
-        return $_4('angle', $_5.value);
+        return $_5('angle', $_6.value);
     }, 1000 / 60);
-    return document.body.appendChild($_5);
+    return document.body.appendChild($_6);
 };
-export const zoom_slider = ($_4) => {
-    let $_9 = document.createElement('div');
-    $_9.style.position = 'absolute';
-    $_9.style.top = '25%';
-    $_9.style.bottom = '25%';
-    $_9.style.left = '2%';
-    $_9.style.right = '96%';
-    $_9.style.borderRadius = '30px';
-    document.body.appendChild($_9);
-    let $_5 = document.createElement('input');
-    $_5.type = 'range';
-    $_5.style.position = 'absolute';
-    $_5.style.appearance = 'none';
-    $_5.style.background = '#A0A0A0';
-    $_5.style.borderRadius = '30px';
-    $_5.style.transform = 'rotate(270deg)';
-    $_5.style.top = '40%';
-    $_5.style.width = '200px';
-    $_5.style.marginLeft = '-50px';
-    $_5.style.opacity = 0.75;
-    $_5.min = -1;
-    $_5.max = 1;
-    $_5.step = 0.001;
-    $_5.value = 0;
+export const zoom_slider = ($_5) => {
+    let $_10 = document.createElement('div');
+    $_10.style.position = 'absolute';
+    $_10.style.top = '25%';
+    $_10.style.bottom = '25%';
+    $_10.style.left = '2%';
+    $_10.style.right = '96%';
+    $_10.style.borderRadius = '30px';
+    document.body.appendChild($_10);
+    let $_6 = document.createElement('input');
+    $_6.type = 'range';
+    $_6.style.position = 'absolute';
+    $_6.style.appearance = 'none';
+    $_6.style.background = '#A0A0A0';
+    $_6.style.borderRadius = '30px';
+    $_6.style.transform = 'rotate(270deg)';
+    $_6.style.top = '40%';
+    $_6.style.width = '200px';
+    $_6.style.marginLeft = '-50px';
+    $_6.style.opacity = 0.75;
+    $_6.min = -1;
+    $_6.max = 1;
+    $_6.step = 0.001;
+    $_6.value = 0;
     setInterval(() => {
-        return $_4('zoom', $_5.value);
+        return $_5('zoom', $_6.value);
     }, 1000 / 60);
-    return $_9.appendChild($_5);
+    return $_10.appendChild($_6);
 };
-export const brick = ($_10, $_11, $_4) => {
-    let $_9 = document.createElement('button');
-    $_9.style.position = 'absolute';
-    $_9.style.top = (2 + $_10 * 12) + '%';
-    $_9.style.right = '2%';
-    $_9.style.width = '5%';
-    $_9.style.height = '10%';
-    $_9.style.border = '2px solid black';
-    $_9.style.background = $_11;
-    $_9.style.borderRadius = '30px';
-    $_9.onclick = () => {
-        return $_4('brick', $_10);
+export const brick = ($_11, $_12, $_5) => {
+    let $_10 = document.createElement('button');
+    $_10.style.position = 'absolute';
+    $_10.style.top = (2 + $_11 * 12) + '%';
+    $_10.style.right = '2%';
+    $_10.style.width = '5%';
+    $_10.style.height = '10%';
+    $_10.style.border = '2px solid black';
+    $_10.style.background = $_12;
+    $_10.style.borderRadius = '30px';
+    $_10.onclick = () => {
+        return $_5('brick', $_11);
     };
-    return document.body.appendChild($_9);
+    return document.body.appendChild($_10);
 };
-export const ui_start = ($_4) => {
-    angle_slider($_4);
-    zoom_slider($_4);
-    brick(0, 'red', $_4);
-    brick(1, '#fcc203', $_4);
-    brick(2, '#fcf003', $_4);
-    brick(3, '#a5fc03', $_4);
-    brick(4, '#03dffc', $_4);
-    return brick(5, 'white', $_4);
+export let rainbow = `
+    linear-gradient(in hsl longer hue 45deg, red 0 0)
+`;
+export const ui_start = ($_5) => {
+    angle_slider($_5);
+    zoom_slider($_5);
+    brick(0, 'red', $_5);
+    brick(1, '#fcc203', $_5);
+    brick(2, '#fcf003', $_5);
+    brick(3, '#a5fc03', $_5);
+    brick(4, '#03dffc', $_5);
+    brick(5, rainbow, $_5);
+    return brick(6, 'white', $_5);
 };
